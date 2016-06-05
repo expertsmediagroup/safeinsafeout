@@ -24,7 +24,7 @@ function load(page,history) {
   $('#overlay').show();
 
   $.ajax({
-    url: 'http://www.safein-safeout.com/development/'+page[0],
+    url: page[0],
     cache: false,
     success: function(result) {
       $(document).off("submit");
