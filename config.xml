@@ -1,7 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.safeinsafeout" version="1.0.0">
  <name><![CDATA[Safe In & Safe Out]]></name>
 
- <description>Safe In & Safe Out is designed for Easy Access.</description>
+ <description><![CDATA[Safe In & Safe Out is designed for Easy Access.]]></description>
 
  <author href="http://www.safein-safeout.com" email="contact@safein-safeout.com"><![CDATA[Safe In & Safe Out]]></author>
 
