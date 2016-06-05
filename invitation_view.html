@@ -1,0 +1,67 @@
+<script type="text/javascript">
+$(document).on('load',function() {
+  /* INITIALIZE */
+  login();
+
+  /* DISPLAY */
+  var ajax=[];
+  ajax[0] = $.ajax({
+    type: 'get',
+    url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash')
+  });  
+
+  var phoneparser=[],phone='',code=[];
+  $.when(ajax[0]).done(function(response_invitation) {
+    response_invitation = jQuery.parseJSON(response_invitation);
+
+    if(response_invitation.status == '0') {
+      phoneparser = parsePhone(response_invitation.invitation.phone);
+
+      phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
+
+      code[0] = '<h2><b>'+response_invitation.invitation.name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Period (Start): '+response_invitation.invitation.period_start+'</p><p>Period (End): '+response_invitation.invitation.period_end+'</p></a>';
+      code[1] = '<img src="http://www.safein-safeout.com/application_customer/library/phpqrcode/code.php?code='+response_invitation.invitation.code+'">';
+      code[2] = '<p>Address: '+response_invitation.invitation.building_address+' ('+response_invitation.invitation.property_address+')</p><p>ZIP: '+response_invitation.invitation.building_zip+'</p><p>City: '+response_invitation.invitation.building_city+'</p><p>State/Province: '+response_invitation.invitation.building_state_province+'</p><p>Country: '+response_invitation.invitation.building_country+'</p>';
+      code[3] = '<button class="button button-block button-stable" style="border: 1px solid #AAAAAA" onclick="window.location=\'geo:0,0?q='+response_invitation.invitation.building_address+', '+response_invitation.invitation.building_zip+', '+response_invitation.invitation.building_city+', '+response_invitation.invitation.building_state_province+', '+response_invitation.invitation.building_country+'\'">Map</button>';
+ 
+      $('#data_0').html(code[0]); 
+      $('#data_1').html(code[1]); 
+      $('#data_2').html(code[2]); 
+      $('#data_3').html(code[3]); 
+
+      load_display();
+    } else if(response_invitation.status == '1') {
+      load('invitation.html',true);
+    }
+  });
+});
+</script>
+
+
+<div id="content">
+ <div class="list list-inset">
+  <div class="item item-divider">
+   Invitation (Incoming) - View 
+  </div>
+
+  <div id="data_0" class="item">
+  </div>
+
+  <div class="item item-divider">
+   Invitation (Incoming) - View (QR)
+  </div>
+
+  <div id="data_1" class="item">
+  </div>
+
+  <div class="item item-divider">
+   Invitation (Incoming) - View (Property)
+  </div>
+
+  <div id="data_2" class="item">
+  </div>
+
+  <div id="data_3">
+  </div>
+ </div>
+</div>

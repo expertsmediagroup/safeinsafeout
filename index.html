@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Safe In & Safe Out</title>
+
+  <meta name="viewport" content="initial-scale=1.00,maximum-scale=1.00,user-scalable=no,width=device-width">
+
+  <!-- PLUGIN: JQUERY -->
+  <script type="text/javascript" src="library/jquery/jquery.js"></script>
+
+  <!-- PLUGIN: IONIC -->
+  <link rel="stylesheet" href="library/ionic/ionic.css">
+
+  <!-- PLUGIN: IONICONS -->
+  <link rel="stylesheet" href="library/ionicons/ionicons.css">
+
+  <!-- PLUGIN: FLAGS -->
+  <link rel="stylesheet" href="library/flags/flags.css">
+
+  <!-- PLUGIN: MOBISCROLL -->
+  <link rel="stylesheet" href="library/mobiscroll/mobiscroll.css">
+  <script type="text/javascript" src="library/mobiscroll/mobiscroll.js"></script>
+
+  <!-- PLUGIN: MOMENT -->
+  <script type="text/javascript" src="library/moment/moment.js"></script>
+
+  <!-- PLUGIN: PHONEPARSER -->
+  <script type="text/javascript" src="library/phoneparser/phoneparser.js"></script>
+
+  <!-- SCRIPT -->
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <script type="text/javascript" src="library/load.js"></script>
+  <script type="text/javascript" src="library/notification.js"></script>
+  <script type="text/javascript" src="library/login.js"></script>  
+  <script type="text/javascript" src="library/device.js"></script>
+  <script type="text/javascript" src="library/contact.js"></script>
+
+  <!-- STYLESHEET -->
+  <link rel="stylesheet" href="skin/stylesheet.css">
+ </head>
+ <body>
+
+<!-- START: CONTENT -->
+<script type="text/javascript">
+if(location.protocol.indexOf('http') >= 0) var device;
+
+$(document).ready(function() {
+  /* MENU */
+  $('.dropit').dropit();
+
+  /* LOAD */
+  if(location.protocol.indexOf('http') >= 0) {
+    if(localStorage.getItem('hash')) load('invitation.html',true);
+    else                             load('login.html',true);
+  }
+
+  /* CLICK */
+  $(document).on('click','a',function() {
+    load($(this).attr('href'),true);
+
+    return false;
+  });
+
+  $(document).on('click','button',function() {
+    if($(this).attr('href')) {
+      load($(this).attr('href'),true);
+
+      return false;
+    }
+  });
+
+  /* HISTORY */
+  window.onpopstate = function(e) {
+    load(e.state,false);
+  };
+});
+
+document.addEventListener("deviceready",function() {
+  /* LOAD */
+  if(localStorage.getItem('hash')) load('invitation.html',true);
+  else                             load('login.html',true);
+},false);
+</script>
+
+<div id="bar_outside" class="bar bar-header bar-positive">
+ <h1 class="title"><a onmouseover="this.style.cursor='pointer'" onclick="window.location='index.html'" style="text-decoration:none">Safe In & Safe Out</a></h1>
+</div>
+
+<div id="bar_inside" class="bar bar-header bar-positive">
+ <h1 class="title"><a onmouseover="this.style.cursor='pointer'" onclick="window.location='index.html'" style="text-decoration:none">Safe In & Safe Out</a></h1>
+
+ <button href="logout.html" class="button icon ion-log-out"></button>
+</div>
+
+<div id="tabs_outside" class="tabs tabs-top tabs-icon-left">
+ <a href="login.html" class="tab-item"><i class="icon ion-log-in"></i>Login</a>
+ <a href="recover.html" class="tab-item"><i class="icon ion-ios-unlocked"></i>Recover</a>
+ <a href="register.html" class="tab-item"><i class="icon ion-ios-compose"></i>Register</a>
+</div>
+
+<div id="tabs_inside" class="tabs tabs-top tabs-icon-left">
+ <a href="invitation.html" class="tab-item"><i class="icon ion-email"></i>Invitation</a>
+ <a href="property.html" class="tab-item"><i class="icon ion-home"></i>Property</a>
+ <a href="vehicle.html" class="tab-item"><i class="icon ion-android-car"></i>Vehicle</a>
+</div>
+
+<div class="popover" style="display:block">
+      <div class="list positive">
+        <a class="item" href="#" ng-click="closePopover()">
+          Event Date 
+        </a>
+        <a class="item" href="#" ng-click="closePopover()">
+          Popularity
+        </a>
+      </div>
+</div>
+
+<div id="wrapper"></div>
+<!-- END: CONTENT -->
+
+ <div id="overlay"></div>
+
+ </body>
+</html>

@@ -1,0 +1,105 @@
+<script type="text/javascript">
+$(document).on('load',function() {
+  /* FORM */
+  $(document).on('submit','#form',function() {
+    $.ajax({
+      type: 'post',
+      url: 'http://www.safein-safeout.com/application_customer/index.php?action=recover',
+      data: $('#form').serialize(),
+      async: false,
+      success: function(result) {
+        result = JSON.parse(result);
+
+        if(result.status == '0') {
+          sessionStorage.setItem("phone[0]",$('#form').find('[name="phone[0]"]').val());
+          sessionStorage.setItem("phone[1]",$('#form').find('[name="phone[1]"]').val());
+
+          sessionStorage.setItem("code",result.code);
+
+          load('recover_validation.html',true);
+        } else if(result.status == '1') {
+          notification('Error',result.error.join('\n'));
+        }
+      }
+    });
+
+    return false;
+  });
+
+  /* DISPLAY */
+  var ajax=[];
+  ajax[0] = $.ajax({
+    type: 'get',
+    url: 'http://www.safein-safeout.com/application_customer/index.php?action=country'
+  });  
+
+  var phone=[],phoneparser=[];
+  $.when(ajax[0]).done(function(response_country) {
+    response_country = jQuery.parseJSON(response_country);
+
+    $('#form').find('[name="country"]').val(response_country.country);
+
+    $('#form').find('[name="phone[0]"]').on('change',function() {
+       $('#form').find('[name="phone[1]"]').val('');
+
+       $('.flag').removeClass(function(index,item) {
+         return (item.match(/(^|\s)flag-\S+/g) || []).join(' ');
+       });
+
+      if($(this).val()) {
+        if($(this).val().indexOf('+') < 0) phone[0] = response_country.prefix+$(this).val();
+        else                               phone[0] = $(this).val();
+
+        phoneparser = parsePhone(phone[0]);
+
+        if(!phoneparser) return;
+
+        if($(this).val().indexOf('+') < 0) phone[0] = phoneparser.areaCode+'-'+phoneparser.number;
+        else                               phone[0] = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
+
+        phone[1] = phoneparser.countryCode+phoneparser.areaCode+phoneparser.number;
+
+        $('#form').find('[name="phone[0]"]').val(phone[0]);
+        $('#form').find('[name="phone[1]"]').val(phone[1]);
+
+        $('.flag').css('opacity','1.00');   
+        $('.flag').addClass('flag-'+phoneparser.countryISOCode.toLowerCase());
+      } else {
+        $('.flag').css('opacity','0.25');   
+        $('.flag').addClass('flag-'+response_country.country.toLowerCase());
+      }
+    });
+
+    $('#form').find('[name="phone[0]"]').trigger('change');
+
+    $('#form').find('[name="phone[0]"]').on('input',function() {
+      $('#form').find('[name="phone[0]"]').trigger('change');
+    });
+
+    $('#form').find('[name="phone[0]"]').on('keyup',function() {
+      $('#form').find('[name="phone[0]"]').trigger('change');
+    });
+
+    load_display();
+  });
+});
+</script>
+
+<div id="content">
+ <div class="list list-inset">
+  <div class="item item-divider">
+   Recover
+  </div>
+
+  <form id="form">
+   <label class="item item-input">
+    <span class="input-label">Phone</span>
+    <input type="text" name="phone[0]">
+    <input type="hidden" name="phone[1]">
+    <span class="flag"></span>
+   </label>
+ 
+   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
+  </form>
+ </div>
+</div>

@@ -1,0 +1,132 @@
+<script type="text/javascript">
+$(document).on('load',function() {
+  /* INITIALIZE */
+  login();
+
+  /* FORM */
+  var method='',data='';
+  $(document).on('submit','#form',function() {
+    if($(this).attr('method') == 'delete' && !confirm('Delete Invitation?')) return false;
+
+    login();
+
+    method = $(this).attr('method');
+
+    if($(this).attr('method') == 'modify') data = $('#form').serialize();
+
+    $.ajax({
+      type: 'post',
+      url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&step='+method+'&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash'),
+      data: data,
+      cache: false,
+      async: false,
+      success: function(result) {
+        result = JSON.parse(result);
+
+        if(result.status == '0' || method == 'delete') {
+          load('invitation.html#'+method,true);
+        } else if(result.status == '2') {
+          notification('Error',result.error.join('\n'));
+        }
+      }
+    });
+
+    return false;
+  });
+
+  /* DISPLAY */
+  var ajax=[];
+  ajax[0] = $.ajax({
+    type: 'get',
+    url: 'http://www.safein-safeout.com/application_customer/index.php?action=property&hash='+localStorage.getItem('hash')
+  });
+
+  ajax[1] = $.ajax({
+    type: 'get',
+    url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash')
+  });
+
+  var phoneparser=[],code='';
+  $.when(ajax[0],ajax[1]).done(function(response_property,response_invitation) {
+    response_property = jQuery.parseJSON(response_property[0]);
+
+    response_invitation = jQuery.parseJSON(response_invitation[0]);
+
+    if(response_invitation.status == '0') {
+      phoneparser = parsePhone(response_invitation.invitation.phone);
+
+      $('#form').find('[name="name"]').val(response_invitation.invitation.name);
+
+      $('#form').find('[name="phone"]').val('+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number);
+      $('.flag').addClass('flag-'+phoneparser.countryISOCode.toLowerCase());
+
+      for(key in response_property.property) code += '<option value="'+key+'">'+response_property.property[key].name+'</option>';
+      $('#form').find('[name="property"]').append(code);   
+      $('#form').find('[name="property"]').val(response_invitation.invitation.property);   
+
+      $('#form').find('[name="period[0]"]').val(response_invitation.invitation.period_start);
+
+      $('#form').find('[name="period[0]"]').scroller({preset: 'datetime', 
+                                                      theme: 'android-ics', 
+                                                      mode: 'clickpick',
+                                                      dateFormat: 'yy-mm-dd',
+                                                      timeFormat: 'hh:iiA'});
+
+      $('#form').find('[name="period[1]"]').val(response_invitation.invitation.period_end);
+
+      $('#form').find('[name="period[1]"]').scroller({preset: 'datetime', 
+                                                      theme: 'android-ics', 
+                                                      mode: 'clickpick',
+                                                      dateFormat: 'yy-mm-dd',
+                                                      timeFormat: 'hh:iiA'});
+     
+      load_display();
+    } else if(response_invitation.status == '1') {
+      load('invitation.html',true);
+    }
+  });
+});
+</script>
+
+<div id="content">
+ <div class="list list-inset">
+  <form id="form" method="modify">
+   <label class="item item-input">
+    <span class="input-label">Name</span>
+    <input type="text" name="name">
+   </label>
+
+   <label class="item item-input item-select item-disabled">
+    <span class="input-label">Contact</span>
+    <select name="contact" disabled><option value="">Unknown</select>
+   </label>
+
+   <label class="item item-input item-disabled">
+    <span class="input-label">Phone</span>
+    <input type="text" name="phone" disabled>
+    <span class="flag"></span>
+   </label>
+
+   <label class="item item-input item-select item-disabled">
+    <span class="input-label">Property</span>
+    <select name="property" disabled></select>
+   </label>
+
+   <label class="item item-input">
+    <span class="input-label">Period (Start)</span>
+    <input type="text" name="period[0]">
+   </label>
+
+   <label class="item item-input">
+    <span class="input-label">Period (End)</span>
+    <input type="text" name="period[1]">
+   </label>
+
+   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
+  </form>
+
+  <form id="form" method="delete">
+   <button class="button button-block button-assertive" style="border: 1px solid #AAAAAA">Delete</button>
+  </form>
+ </div>
+</div>

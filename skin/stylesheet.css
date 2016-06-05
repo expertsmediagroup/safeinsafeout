@@ -1,0 +1,87 @@
+#wrapper {
+ transform: translate3d(0,0,0);
+}
+
+#content {
+ display: none;
+ margin-top: 102px;
+ transform: translate3d(0,0,0);
+}
+
+#button {
+ position:fixed;
+ display: none;
+ left: 100%;
+ top: 100%;
+ margin: -48px;
+ z-index: 10;
+}
+
+#button > a {
+ display: block;
+ text-align:center;
+ font-size: 30px;
+ color: #ffffff;
+ width: 32px;
+ height: 32px;
+ border-radius: 32px;
+ border: 1px solid #bbbbbb;
+ background-color: #387ef5;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  top:  0; 
+  left: 0; 
+  width:  100%;
+  height: 100%; 
+  opacity: 0.10; 
+  background: #000; 
+  z-index: 10;
+}
+
+/* IONIC */
+.bar {
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ visibility: hidden;
+ z-index: 20;
+}
+
+.tabs {
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ visibility: hidden;
+ z-index: 20;
+}
+
+.card, .list-inset {
+ margin: 10px;
+}
+
+/* IONIC (ADDON) */
+.item-disabled,
+.item-disabled > select,
+.item-disabled > input {
+background-color: #f8f5f5;
+}
+
+/* MOBISCROLL */
+.dwrc,
+.dwrc::before,
+.dwrc::after,
+.dwhl,
+.dwhl::before,
+.dwhl::after {
+ box-sizing: content-box;
+}
+
+/* FLAGS */
+.flag {
+ position: absolute;
+ right: 15px;
+ bottom: 8px;
+}
