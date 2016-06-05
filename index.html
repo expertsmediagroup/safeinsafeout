@@ -46,9 +46,6 @@
 if(location.protocol.indexOf('http') >= 0) var device;
 
 $(document).ready(function() {
-  /* MENU */
-  $('.dropit').dropit();
-
   /* LOAD */
   if(location.protocol.indexOf('http') >= 0) {
     if(localStorage.getItem('hash')) load('invitation.html',true);
