@@ -34,8 +34,6 @@
  <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
  <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
 
- <icon src="icon.png"/>
-
  <access origin="*"/>
 
  <allow-intent href="http://*/*"/>
@@ -44,6 +42,8 @@
  <allow-intent href="sms:*"/>
  <allow-intent href="mailto:*"/>
  <allow-intent href="geo:*"/>
+
+ <icon src="skin/icon.png"/>
 
  <platform name="android">
   <icon src="skin/android-ldpi.png" density="ldpi"/>
