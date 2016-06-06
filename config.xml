@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.safeinsafeout" version="2.00" android-versionCode="50">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.safeinsafeout" version="2.01" android-versionCode="51">
  <name><![CDATA[Safe In & Safe Out]]></name>
 
  <description><![CDATA[Safe In & Safe Out is designed for Easy Access.]]></description>
@@ -35,12 +35,12 @@
  <icon src="skin/icon.png"/>
 
  <platform name="android">
-  <icon src="skin/android-ldpi.png" density="ldpi"/>
-  <icon src="skin/android-mdpi.png" density="mdpi"/>
-  <icon src="skin/android-hdpi.png" density="hdpi"/>
-  <icon src="skin/android-xhdpi.png" density="xhdpi"/>
-  <icon src="skin/android-xxhdpi.png" density="xxhdpi"/>
-  <icon src="skin/android-xxxhdpi.png" density="xxxhdpi"/>
+  <icon src="skin/icon-android-ldpi.png" density="ldpi"/>
+  <icon src="skin/icon-android-mdpi.png" density="mdpi"/>
+  <icon src="skin/icon-android-hdpi.png" density="hdpi"/>
+  <icon src="skin/icon-android-xhdpi.png" density="xhdpi"/>
+  <icon src="skin/icon-android-xxhdpi.png" density="xxhdpi"/>
+  <icon src="skin/icon-android-xxxhdpi.png" density="xxxhdpi"/>
  </platform>
 
  <platform name="ios">
