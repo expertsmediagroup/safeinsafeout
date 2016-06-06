@@ -34,15 +34,6 @@
  <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
  <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
 
- <access origin="*"/>
-
- <allow-intent href="http://*/*"/>
- <allow-intent href="https://*/*"/>
- <allow-intent href="tel:*"/>
- <allow-intent href="sms:*"/>
- <allow-intent href="mailto:*"/>
- <allow-intent href="geo:*"/>
-
  <icon src="skin/icon.png"/>
 
  <platform name="android">
@@ -72,4 +63,13 @@
   <icon src="www/res/icon/ios/icon-small@2x.png" platform="ios" width="58" height="58"/>
   <icon src="www/res/icon/ios/icon-small@3x.png" platform="ios" width="87" height="87"/>
  </platform>
+
+ <access origin="*"/>
+
+ <allow-intent href="http://*/*"/>
+ <allow-intent href="https://*/*"/>
+ <allow-intent href="tel:*"/>
+ <allow-intent href="sms:*"/>
+ <allow-intent href="mailto:*"/>
+ <allow-intent href="geo:*"/>
 </widget>
