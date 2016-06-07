@@ -1,4 +1,6 @@
 function load(page,history) {
+  var url='';
+
   page = page.split('#');
 
   if(history) {   
@@ -23,8 +25,10 @@ function load(page,history) {
   $('#wrapper').html('');
   $('#overlay').show();
 
+  if(sessionStorage.getItem('url')) url = sessionStorage.getItem('url');
+
   $.ajax({
-    url: page[0],
+    url: url+page[0],
     cache: false,
     success: function(result) {
       $(document).off("submit");

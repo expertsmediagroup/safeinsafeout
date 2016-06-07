@@ -9,8 +9,8 @@ function login() {
 
       /* PROCEED */
       if(result.status == '1') {
-        localStorage.setItem('country','');
         localStorage.setItem('hash','');
+        localStorage.setItem('country','');
         localStorage.setItem('prefix','');
 
         $('#wrapper').html('');
@@ -18,7 +18,7 @@ function login() {
         window.location = 'index.html';
       }
     }
-  })
+  });
 
-return false;
+  return false;
 }
