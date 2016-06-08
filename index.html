@@ -67,6 +67,13 @@ $(document).ready(function() {
     }
   });
 
+  /* ERROR */
+  $(document).ajaxError(function() {
+    $('#content').hide();
+    $('#overlay').show();;
+    $('#connectivity').fadein(750);
+  });
+
   /* HISTORY */
   window.onpopstate = function(e) {
     load(e.state,false);
@@ -106,6 +113,12 @@ document.addEventListener("deviceready",function() {
 <!-- END: CONTENT -->
 
  <div id="overlay"></div>
+
+ <div id="connectivity">
+  Can't connect right now.
+
+  <img src="skin/connectivity.png">
+ </div>
 
  </body>
 </html>

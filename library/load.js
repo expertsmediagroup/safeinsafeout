@@ -45,6 +45,7 @@ function load_display() {
   if(device) $(document).trigger("initialize");
 
   $('#overlay').fadeOut(750);
+  $('#connectivity').fadeOut(750);
   $('#content').fadeIn(750);
   $('#button').fadeIn(750);
 }
