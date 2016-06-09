@@ -19,7 +19,7 @@ $(document).on('load',function() {
         if(result.status == '0') {
           load('property.html#add',true);
         } else if(result.status == '1') {
-          notification('Error',result.error.join('\n'));
+          alert(result.error.join('\n'));
         }
       }
     })

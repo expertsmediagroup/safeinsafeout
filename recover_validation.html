@@ -16,7 +16,7 @@ $(document).on('load',function() {
 
           load('recover_password.html',true);
         } else if(result.status == '1') {
-          notification('Error',result.error.join('\n'));
+          alert(result.error.join('\n'));
         }
       }
     });

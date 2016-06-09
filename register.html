@@ -22,7 +22,7 @@ $(document).on('load',function() {
 
           load('register_validation.html',true);
         } else if(result.status == '1') {
-          notification('Error',result.error.join('\n'));
+          alert(result.error.join('\n'));
         }
       }
     });

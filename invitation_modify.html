@@ -26,7 +26,7 @@ $(document).on('load',function() {
         if(result.status == '0' || method == 'delete') {
           load('invitation.html#'+method,true);
         } else if(result.status == '2') {
-          notification('Error',result.error.join('\n'));
+          alert(result.error.join('\n'));
         }
       }
     });

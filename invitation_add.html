@@ -27,7 +27,7 @@ $(document).on('load',function() {
             return;
           }
         } else if(result.status == '2') {
-          notification('Error',result.error.join('\n'));
+          alert(result.error.join('\n'));
         }
       }
     });
