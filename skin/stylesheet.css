@@ -1,20 +1,17 @@
-#wrapper {
-height: 100%;
- transform: translate3d(0,0,0);
-}
-
 #content {
  display: none;
  margin-top: 102px;
+ margin-bottom: 10px;
  transform: translate3d(0,0,0);
 }
 
 #button {
  position:fixed;
  display: none;
- bottom: 48px;
- right: 48px;
+ bottom: 20px;
+ right: 20px;
  z-index: 10;
+ transform: translate3d(0,0,0);
 }
 
 #button > a {

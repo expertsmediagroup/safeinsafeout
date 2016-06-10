@@ -51,43 +51,39 @@ $(document).on('load',function() {
       $('#data_1').html(code[1]); 
     }
 
+    $('#button').html('<a href="invitation_add.html"><i class="icon ion-android-add"></i></a>');
+
     load_display();
   });
 });
 </script>
 
-<div id="content">
- <div id="add" class="card hide">
-  <div class="item item-text-wrap">Your invitation has been added.</div>
- </div>
-
- <div id="modify" class="card hide">
-  <div class="item item-text-wrap">Your invitiation has been modified.</div>
- </div>
-
- <div id="delete" class="card hide">
-  <div class="item item-text-wrap">Your invitiation has been deleted.</div>
- </div>
-
- <div class="list list-inset">
-  <div class="item item-divider">
-   Invitation (Incoming)
-  </div>
-
-  <div id="data_0" class="item item-text-wrap">
-   You do not have any invitations.
-  </div>
-
-  <div class="item item-divider">
-   Invitation (Outgoing)
-  </div>
-
-  <div id="data_1" class="item item-text-wrap">
-   You do not have any invitations.
-  </div>
- </div>
+<div id="add" class="card hide">
+ <div class="item item-text-wrap">Your invitation has been added.</div>
 </div>
 
-<div id="button">
- <a href="invitation_add.html"><i class="icon ion-android-add"></i></a>
+<div id="modify" class="card hide">
+ <div class="item item-text-wrap">Your invitiation has been modified.</div>
+</div>
+
+<div id="delete" class="card hide">
+ <div class="item item-text-wrap">Your invitiation has been deleted.</div>
+</div>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Invitation (Incoming)
+ </div>
+
+ <div id="data_0" class="item item-text-wrap">
+  You do not have any invitations.
+ </div>
+
+ <div class="item item-divider">
+  Invitation (Outgoing)
+ </div>
+
+ <div id="data_1" class="item item-text-wrap">
+  You do not have any invitations.
+ </div>
 </div>

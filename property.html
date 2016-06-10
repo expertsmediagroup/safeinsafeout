@@ -28,35 +28,31 @@ $(document).on('load',function() {
       $('#data').html(code);
     }
 
+    $('#button').html('<a href="property_add.html"><i class="icon ion-android-add"></i></a>');
+   
     load_display();
   });
 });
 </script>
 
-<div id="content">
- <div id="add" class="card hide">
-  <div class="item item-text-wrap">Your property has been added.</div>
- </div>
-
- <div id="modify" class="card hide">
-  <div class="item item-text-wrap">Your property has been modified.</div>
- </div>
-
- <div id="delete" class="card hide">
-  <div class="item item-text-wrap">Your property has been deleted.</div>
- </div>
-
- <div class="list list-inset">
-  <div class="item item-divider">
-   Property
-  </div>
-
-  <div id="data" class="item item-text-wrap">
-   You do not have any properties.
-  </div>
- </div>
+<div id="add" class="card hide">
+ <div class="item item-text-wrap">Your property has been added.</div>
 </div>
 
-<div id="button">
- <a href="property_add.html"><i class="icon ion-android-add"></i></a>
+<div id="modify" class="card hide">
+ <div class="item item-text-wrap">Your property has been modified.</div>
+</div>
+
+<div id="delete" class="card hide">
+ <div class="item item-text-wrap">Your property has been deleted.</div>
+</div>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Property
+ </div>
+
+ <div id="data" class="item item-text-wrap">
+  You do not have any properties.
+ </div>
 </div>

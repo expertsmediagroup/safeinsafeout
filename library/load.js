@@ -22,7 +22,7 @@ function load(page,history) {
     $('#tabs_inside').css('visibility','hidden');
   }
 
-  $('#wrapper').html('');
+  $('#content').hide();
   $('#overlay').show();
 
   if(sessionStorage.getItem('url')) url = sessionStorage.getItem('url');
@@ -31,18 +31,18 @@ function load(page,history) {
     url: url+page[0],
     cache: false,
     success: function(result) {
-      $(document).off("submit");
+      $(document).off('submit');
 
-      $('#wrapper').html(result);
+      $('#content').html(result);
 
-      $(document).trigger("load");
-      $(document).off("load");
+      $(document).trigger('load');
+      $(document).off('load');
     }
   })
 }
 
 function load_display() {
-  if(device) $(document).trigger("initialize");
+  if(device) $(document).trigger('initialize');
 
   $('#overlay').fadeOut(750);
   $('#connectivity').fadeOut(750);

@@ -34,31 +34,29 @@ $(document).on('load',function() {
 });
 </script>
 
-<div id="content">
- <div id="delete" class="card">
-  <div class="item item-text-wrap">We have sended you a validation code thru SMS.</div>
+<div id="delete" class="card">
+ <div class="item item-text-wrap">We have sended you a validation code thru SMS.</div>
+</div>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Register (Validation)
  </div>
 
- <div class="list list-inset">
-  <div class="item item-divider">
-   Register (Validation)
-  </div>
+ <form id="form">
+  <input type="hidden" name="country">
+  <input type="hidden" name="phone[0]">
+  <input type="hidden" name="phone[1]">
+  <input type="hidden" name="password">
+  <input type="hidden" name="first_name">
+  <input type="hidden" name="last_name">
 
-  <form id="form">
-   <input type="hidden" name="country">
-   <input type="hidden" name="phone[0]">
-   <input type="hidden" name="phone[1]">
-   <input type="hidden" name="password">
-   <input type="hidden" name="first_name">
-   <input type="hidden" name="last_name">
-
-   <label class="item item-input">
-    <span class="input-label">Code</span>
-    <input type="text" name="code[0]">
-    <input type="hidden" name="code[1]">
-   </label>
+  <label class="item item-input">
+   <span class="input-label">Code</span>
+   <input type="text" name="code[0]">
+   <input type="hidden" name="code[1]">
+  </label>
  
-   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
-  </form>
- </div>
+  <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
+ </form>
 </div>

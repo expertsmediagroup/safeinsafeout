@@ -13,7 +13,7 @@ function login() {
         localStorage.setItem('country','');
         localStorage.setItem('prefix','');
 
-        $('#wrapper').html('');
+        $('#content').html('');
 
         window.location = 'index.html';
       }
