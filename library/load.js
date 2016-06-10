@@ -23,6 +23,7 @@ function load(page,history) {
   }
 
   $('#content').hide();
+  $('#button').hide();
   $('#overlay').show();
 
   if(sessionStorage.getItem('url')) url = sessionStorage.getItem('url');
@@ -44,8 +45,8 @@ function load(page,history) {
 function load_display() {
   if(device) $(document).trigger('initialize');
 
-  $('#overlay').fadeOut(750);
-  $('#connectivity').fadeOut(750);
   $('#content').fadeIn(750);
   $('#button').fadeIn(750);
+  $('#overlay').fadeOut(750);
+  $('#connectivity').fadeOut(750);
 }
