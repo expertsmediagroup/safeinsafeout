@@ -31,6 +31,8 @@
   <param name="SENDER_ID" value="386444212972"/>
  </plugin> 
 
+ <preference name="android-build-tool" value="gradle"/> 
+
  <icon src="skin/icon.png"/>
 
  <platform name="android">
