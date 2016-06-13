@@ -1,0 +1,37 @@
+<script type="text/javascript">
+$(document).on('load',function() {
+  /* INITIALIZE */
+  login();
+
+  if(location.hash.indexOf('phone') > 0) $('#phone').show();
+
+  if(location.hash.indexOf('password') > 0) $('#password').show();
+
+  if(location.hash.indexOf('identification') > 0) $('#identification').show();
+
+  /* DISPLAY */
+  load_display();
+});
+</script>
+
+<div id="phone" class="card hide">
+ <div class="item item-text-wrap">Your phone has been modified.</div>
+</div>
+
+<div id="password" class="card hide">
+ <div class="item item-text-wrap">Your password has been modified.</div>
+</div>
+
+<div id="identification" class="card hide">
+ <div class="item item-text-wrap">Your identification has been modified.</div>
+</div>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Profile 
+ </div>
+
+ <button href="profile_phone.html" class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed (Modify Phone)</button>
+ <button href="profile_password.html" class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed (Modify Password)</button>
+ <button href="profile_identification.html" class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed (Submit Identification)</button>
+</div>

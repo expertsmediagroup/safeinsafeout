@@ -1,0 +1,62 @@
+<script type="text/javascript">
+$(document).on('load',function() {
+  /* FORM */
+  $(document).on('submit','#form',function() {
+    $.ajax({
+      type: 'post',
+      url: 'http://www.safein-safeout.com/application_customer/index.php?action=profile&step=phone_validation&hash='+localStorage.getItem('hash'),
+      data: $('#form').serialize(),
+      async: false,
+      success: function(result) {
+        result = JSON.parse(result);
+
+        if(result.status == '0') {
+          localStorage.setItem('hash',result.hash);
+          localStorage.setItem('country',result.country);
+          localStorage.setItem('prefix',result.prefix);
+
+          load('profile.html#phone',true);
+        } else if(result.status == '1') {
+          alert(result.error.join('\n'));
+        }
+      }
+    });
+
+    return false;
+  });
+
+  /* DISPLAY */
+  $('#form').find('[name="country"]').val(sessionStorage.getItem('country')); 
+  $('#form').find('[name="phone[0]"]').val(sessionStorage.getItem('phone[0]')); 
+  $('#form').find('[name="phone[1]"]').val(sessionStorage.getItem('phone[1]')); 
+  $('#form').find('[name="code[1]"]').val(sessionStorage.getItem('code')); 
+
+  load_display();
+});
+</script>
+
+<div id="delete" class="card">
+ <div class="item item-text-wrap">We have sended you a validation code thru SMS.</div>
+</div>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Profile - Phone (Validation)
+ </div>
+
+ <form id="form">
+  <input type="hidden" name="country">
+  <input type="hidden" name="phone[0]">
+  <input type="hidden" name="phone[1]">
+
+  <label class="item item-input">
+   <span class="input-label">Code</span>
+   <input type="text" name="code[0]">
+   <input type="hidden" name="code[1]">
+  </label>
+ 
+  <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
+ </form>
+
+ <button href="profile.html" class="button button-block button-assertive" style="border: 1px solid #AAAAAA">Cancel</button>
+</div>

@@ -35,7 +35,9 @@
   <script type="text/javascript" src="library/device.js"></script>
   <script type="text/javascript" src="library/push.js"></script>
   <script type="text/javascript" src="library/contact.js"></script>
+  <script type="text/javascript" src="library/media.js"></script>
   <script type="text/javascript" src="library/notification.js"></script>
+  <script type="text/javascript" src="library/confirmation.js"></script>
 
   <!-- STYLESHEET -->
   <link rel="stylesheet" href="skin/stylesheet.css">
@@ -54,24 +56,32 @@ $(document).ready(function() {
   }
 
   /* CLICK */
-  $(document).on('click','a',function() {
+  $(document).on('click','a',function() {    
+    $('#menu').hide();
+
     load($(this).attr('href'),true);
 
     return false;
   });
 
   $(document).on('click','button',function() {
-    if($(this).attr('href')) {
+    if($(this).attr('href')) {      
       load($(this).attr('href'),true);
 
       return false;
     }
   });
 
+  /* MENU */
+  $('#bar_inside').find('button').click(function() {
+    $('#menu').toggle(250);
+  });
+
   /* ERROR */
   $(document).ajaxError(function() {
     $('#content').hide();
     $('#overlay').show();
+    $('#progress').hide();
     $('#connectivity').fadeIn(750);
   });
 
@@ -95,7 +105,7 @@ document.addEventListener("deviceready",function() {
 <div id="bar_inside" class="bar bar-header bar-positive">
  <h1 class="title">Safe In & Safe Out</h1>
 
- <button href="logout.html" class="button icon ion-log-out"></button>
+ <button class="button icon ion-navicon-round"></button>
 </div>
 
 <div id="tabs_outside" class="tabs tabs-top tabs-icon-left">
@@ -110,11 +120,21 @@ document.addEventListener("deviceready",function() {
  <a href="vehicle.html" class="tab-item"><i class="icon ion-android-car"></i>Vehicle</a>
 </div>
 
+<div id="menu">
+ <li>Account</li>
+ <a href="profile.html"><i class="icon ion-person" style="float:right"></i>Profile</a>
+ <a href="logout.html"><i class="icon ion-log-out" style="float:right"></i>Logout</a>
+</div>
+
 <div id="content"></div>
 
 <div id="button"></div>
 
 <div id="overlay"></div>
+
+<div id="progress">
+ <img src="skin/progress.gif">
+</div>
 
 <div id="connectivity">
  Can't connect right now.

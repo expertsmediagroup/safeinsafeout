@@ -1,0 +1,33 @@
+<script type="text/javascript">
+var form=[];
+$(document).on('load',function() {
+  /* INITIALIZE */
+  login();
+
+  /* FORM */
+  form[0] = 'http://www.safein-safeout.com/application_customer/index.php?action=profile&step=identification&hash='+localStorage.getItem('hash');
+  form[1] = 'profile.html#identification';
+
+  /* UPLOAD */
+  $(document).off('upload');
+
+  $(document).on('upload',function() {
+    $('#content').hide();
+    $('#overlay').show();
+    $('#progress').show();
+  });
+
+  /* DISPLAY */
+  load_display();
+});
+</script>
+
+<div class="list list-inset">
+ <div class="item item-divider">
+  Profile - Identification
+ </div>
+
+ <button data-media="gallery" class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed (Gallery)</button>
+ <button data-media="camera" class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed (Camera)</button>
+ <button href="profile.html" class="button button-block button-assertive" style="border: 1px solid #AAAAAA">Cancel</button>
+</div>
