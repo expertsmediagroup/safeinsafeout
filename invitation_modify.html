@@ -79,6 +79,8 @@ $(document).on('load',function() {
                                                       mode: 'clickpick',
                                                       dateFormat: 'yy-mm-dd',
                                                       timeFormat: 'hh:iiA'});
+
+      $('#form').find('[name="period[2]"]').val(response_invitation.invitation.period);
      
       load_display();
     } else if(response_invitation.status == '1') {
@@ -120,6 +122,8 @@ $(document).on('load',function() {
    <span class="input-label">Period (End)</span>
    <input type="text" name="period[1]">
   </label>
+
+  <input type="hidden" name="period[2]">
 
   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
  </form>

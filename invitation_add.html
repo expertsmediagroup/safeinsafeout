@@ -116,6 +116,8 @@ $(document).on('load',function() {
                                                     dateFormat: 'yy-mm-dd',
                                                     timeFormat: 'hh:iiA'});
 
+    $('#form').find('[name="period[2]"]').val(moment().format('YYYY-MM-DD hh:mmA'));
+
     load_display();
   });
 })
@@ -158,6 +160,8 @@ $(document).on('load',function() {
    <span class="input-label">Period (End)</span>
    <input type="text" name="period[1]">
   </label>
+
+  <input type="hidden" name="period[2]">
 
   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
  </form>

@@ -1,3 +1,5 @@
+/* if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined && data[a].phoneNumbers[b].type == 'mobile') { */
+
 $(document).on('initialize',function() {
   var option,field;
 
@@ -21,7 +23,7 @@ function contact_success(data) {
       name = data[a].name.formatted;
       name = name.replace(/'/g,"''");
       
-      if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined && data[a].phoneNumbers[b].type == 'mobile') {            
+      if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined) {            
         phone = data[a].phoneNumbers[b].value;
         phone = phone.replace(/[^0-9+]/g,'');
   
