@@ -19,6 +19,8 @@ $(document).on('initialize',function() {
 
 function contact_success(data) {
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
+
+    alert('Contact Fix #5-1');
   
   for(a=0;a<data.length;a++) {
     if(data[a].displayName != null && data[a].displayName != undefined) {
@@ -37,8 +39,12 @@ function contact_success(data) {
       }
     }
   }
+
+    alert('Contact Fix #5-2');
   
   list.sort();
+
+    alert('Contact Fix #5-3');
 
   for(a=0;a<list.length;a++) {
     list[a] = list[a].split('|');
@@ -51,6 +57,8 @@ function contact_success(data) {
 
     $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+list[a][0]+' ('+phone+')</option>');        
   }
+
+    alert('Contact Fix #5-4');
 
   if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
 }
