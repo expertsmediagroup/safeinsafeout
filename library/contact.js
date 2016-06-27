@@ -19,6 +19,7 @@ $(document).on('initialize',function() {
 })
 
 function contact_success(data) {
+  alert(JSON.stringify(data));
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
