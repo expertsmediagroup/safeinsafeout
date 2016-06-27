@@ -4,6 +4,8 @@ $(document).on('initialize',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
+    alert('Contact Fix');
+
     option = new ContactFindOptions();
   
     option.filter = '';
