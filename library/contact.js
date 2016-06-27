@@ -11,7 +11,7 @@ $(document).on('initialize',function() {
     option.filter = '';
     option.multiple = true;
 
-    field = ['*'];
+    field = ['displayName','phoneNumbers'];
     alert('Contact Fix #4-1');
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
