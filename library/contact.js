@@ -4,7 +4,7 @@ $(document).on('initialize',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    alert('Contact Fix #4');
+    alert('Contact Fix #5');
 
     option = new ContactFindOptions();
   
@@ -12,23 +12,18 @@ $(document).on('initialize',function() {
     option.multiple = true;
 
     field = ['displayName','phoneNumbers'];
-    alert('Contact Fix #4-1');
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
-    alert('Contact Fix #4-2');
   }
 })
 
 function contact_success(data) {
-    alert('Contact Fix #4-3');
-  alert(JSON.stringify(data));
-    alert('Contact Fix #4-4');
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
     if(data[a].displayName != null && data[a].displayName != undefined) {
       name = data[a].displayName;
-      name = name.replace(/'/g,"''");
+      name = name.replace(/[^A-Za-z0-9 +]/g,'');
     
       if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined) {            
         phone = data[a].phoneNumbers[b].value;
