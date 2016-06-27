@@ -8,8 +8,9 @@ $(document).on('initialize',function() {
   
     option.filter = '';
     option.multiple = true;
+    option.hasPhoneNumber = true;
   
-    field = ['name','phoneNumbers'];
+    field = ['displayName','phoneNumbers'];
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
   }
@@ -19,10 +20,10 @@ function contact_success(data) {
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
-    if(data[a].name.formatted != null && data[a].name.formatted != undefined) {
-      name = data[a].name.formatted;
+    if(data[a].displayName != null && data[a].displayName != undefined) {
+      name = data[a].displayName;
       name = name.replace(/'/g,"''");
-      
+    
       if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined) {            
         phone = data[a].phoneNumbers[b].value;
         phone = phone.replace(/[^0-9+]/g,'');
