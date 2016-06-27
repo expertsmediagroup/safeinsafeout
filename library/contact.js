@@ -10,9 +10,8 @@ $(document).on('initialize',function() {
   
     option.filter = '';
     option.multiple = true;
-    option.hasPhoneNumber = true;
-  
-    field = ['displayName','phoneNumbers'];
+
+    field = ['*'];
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
   }
@@ -58,4 +57,5 @@ function contact_success(data) {
 }
 
 function contact_fail(message) {
+  alert(message);
 }
