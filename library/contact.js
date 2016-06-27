@@ -4,7 +4,7 @@ $(document).on('initialize',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    alert('Contact Fix');
+    alert('Contact Fix #2');
 
     option = new ContactFindOptions();
   
