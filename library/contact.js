@@ -9,7 +9,9 @@ $(document).on('initialize',function() {
     option.filter = '';
     option.multiple = true;
     option.hasPhoneNumber = true;
+/*
     option.desiredFields = [navigator.contacts.fieldType.id];
+*/
 
     field = [navigator.contacts.fieldType.displayName,navigator.contacts.fieldType.phoneNumbers];
 
