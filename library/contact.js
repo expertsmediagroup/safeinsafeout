@@ -53,13 +53,13 @@ function contact_success(data) {
     
     phoneparser = parsePhone(list[a][1]);
 
-/*
-    phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
+    if(phoneparser) {
+      phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
 
-    $('span[data-contact="'+phone+'"]').html(list[a][0]+' ('+phone+')');
+      $('span[data-contact="'+phone+'"]').html(list[a][0]+' ('+phone+')');
 
-    $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+list[a][0]+' ('+phone+')</option>');        
-*/
+      $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+list[a][0]+' ('+phone+')</option>');        
+    }
   }
 
   alert('Contact Fix #12-5');  
