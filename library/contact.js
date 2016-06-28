@@ -18,8 +18,11 @@ $(document).on('initialize',function() {
 })
 
 function contact_success(data) {
+alert(JSON.stringify(data));
+
+
 for(a=0;a<data.length;a++) {
-  alert(data[a].displayName);
+  alert(data[a][navigator.contacts.fieldType.displayName]);
 }
 
 /*
