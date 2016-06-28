@@ -2,7 +2,7 @@ $(document).on('initialize',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    alert('Contact Fix #9');
+    alert('Contact Fix #10');
 
     option = new ContactFindOptions();
   
@@ -20,6 +20,9 @@ $(document).on('initialize',function() {
 })
 
 function contact_success(data) {
+  alert('Contact Fix #10-2');
+  alert(JSON.stringify(data));
+
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
@@ -39,8 +42,14 @@ function contact_success(data) {
       }
     }
   }
-  
+
+  alert('Contact Fix #10-3');  
+  alert(JSON.stringify(list));
+
   list.sort();
+
+  alert('Contact Fix #10-4');  
+  alert(JSON.stringify(list));
 
   for(a=0;a<list.length;a++) {
     list[a] = list[a].split('|');
@@ -53,6 +62,8 @@ function contact_success(data) {
 
     $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+list[a][0]+' ('+phone+')</option>');        
   }
+
+  alert('Contact Fix #10-5');  
 
   if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
 }
