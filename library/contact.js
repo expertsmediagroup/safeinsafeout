@@ -1,10 +1,8 @@
-/* if(data[a].phoneNumbers != null && data[a].phoneNumbers.length > 0) for(b=0;b<data[a].phoneNumbers.length;b++) if(data[a].phoneNumbers[b].value != null && data[a].phoneNumbers[b].value != undefined && data[a].phoneNumbers[b].type == 'mobile') { */
-
 $(document).on('initialize',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    alert('Contact Fix #6');
+    alert('Contact Fix #7');
 
     option = new ContactFindOptions();
   
@@ -18,6 +16,11 @@ $(document).on('initialize',function() {
 })
 
 function contact_success(data) {
+for(a=0;a<data.length;a++) {
+  alert(data[a].displayName);
+}
+
+/*
   var name='',phone='',list=[],list_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
@@ -31,17 +34,12 @@ function contact_success(data) {
   
         if(phone.indexOf('+') < 0) phone = localStorage.getItem('prefix')+phone;
 
-        if(!list_bypass[phone]) $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+name+' ('+phone+')</option>');        
-  
-/*
         if(!list_bypass[phone]) list[list.length] = name+'|'+phone;
-*/      
+
         list_bypass[phone] = true;
       }
     }
   }
-
-/*
     alert('Contact Fix #5-2');
   
   list.sort();
