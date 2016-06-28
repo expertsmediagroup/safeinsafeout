@@ -8,8 +8,10 @@ $(document).on('initialize',function() {
   
     option.filter = '';
     option.multiple = true;
+    option.hasPhoneNumber = true;
+    option.desiredFields = [navigator.contacts.fieldType.id];
 
-    field = ['displayName','phoneNumbers'];
+    field = [navigator.contacts.fieldType.displayName,navigator.contacts.fieldType.phoneNumbers];
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
   }
