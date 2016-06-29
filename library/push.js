@@ -1,5 +1,4 @@
 $(document).on('device-initialize',function() {
-  alert('device-initialize');
   var push;
 
   push = PushNotification.init({

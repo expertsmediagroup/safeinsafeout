@@ -1,11 +1,8 @@
 function login() {
-  alert('login');
-  alert(token);
-
   $.ajax({
     type: 'post',
     url: 'http://www.safein-safeout.com/application_customer/index.php?action=login&step=hash',
-    data: 'hash='+localStorage.getItem('hash'),
+    data: 'hash='+localStorage.getItem('hash')+'&token='+token,
     cache: false,
     success: function(result) {
       result = JSON.parse(result);
