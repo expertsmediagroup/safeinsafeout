@@ -1,4 +1,4 @@
-$(document).on('initialize',function() {
+$(document).on('device-load',function() {
   var source,option;
   $('button[data-media]').on('click',function() {
     if($(this).data('media') == 'gallery') source = Camera.PictureSourceType.SAVEDPHOTOALBUM;

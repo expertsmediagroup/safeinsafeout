@@ -1,4 +1,5 @@
-$(document).on('initialize',function() {
+$(document).on('device-initialize',function() {
+  alert('device-initialize');
   var push;
 
   push = PushNotification.init({
@@ -15,9 +16,7 @@ $(document).on('initialize',function() {
   });
 
   push.on('registration',function(data) {
-    if($('#form').find('[name="device[3]"]').val() != undefined) {
-      $('#form').find('[name="device[3]"]').val(data.registrationId);
-    }
+    token = data.registrationId;
   });
 
   push.on('notification',function(data) {

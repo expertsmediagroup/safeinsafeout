@@ -1,4 +1,7 @@
 function login() {
+  alert('login');
+  alert(token);
+
   $.ajax({
     type: 'post',
     url: 'http://www.safein-safeout.com/application_customer/index.php?action=login&step=hash',

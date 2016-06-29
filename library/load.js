@@ -46,7 +46,7 @@ function load(page,history) {
 }
 
 function load_display() {
-  if(device) $(document).trigger('initialize');
+  if(device) $(document).trigger('device-load');
 
   $('#content').fadeIn(750);
   $('#button').fadeIn(750);

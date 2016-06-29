@@ -46,7 +46,7 @@
 
 <!-- START: CONTENT -->
 <script type="text/javascript">
-if(location.protocol.indexOf('http') >= 0) var device;
+if(location.protocol.indexOf('http') >= 0) var device,token;
 
 $(document).ready(function() {
   /* LOAD */
@@ -92,6 +92,8 @@ $(document).ready(function() {
 });
 
 document.addEventListener("deviceready",function() {
+  var token;
+
   /* LOAD */
   if(localStorage.getItem('hash')) load('invitation.html',true);
   else                             load('login.html',true);
