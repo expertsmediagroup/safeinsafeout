@@ -39,6 +39,10 @@ $(document).on('load',function() {
     return false;
   });
 
+  $(document).on('confirm',function() {
+    alert('trigger process');
+  });
+
   /* DISPLAY */
   var ajax=[];
   ajax[0] = $.ajax({

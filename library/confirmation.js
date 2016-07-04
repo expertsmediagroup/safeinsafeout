@@ -5,10 +5,6 @@ confirm = function(text) {
 }
 
 $(document).on('device-initialize',function() {
-  $(document).on('confirm',function() {
-    alert('trigger process');
-  });
-
   confirm = function(text) {
     if(confirm_native('test')) $(document).trigger('confirm');
   }
