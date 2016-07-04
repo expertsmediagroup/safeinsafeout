@@ -19,6 +19,9 @@ $(document).on('load',function() {
         if(result.status == '0') {
           load('invitation.html#add',true);
         } else if(result.status == '1') {
+          confirm('The person you trying to send a invitation, is not a customer of our service, if you proceed, we will send him a message, so he can download the application or view the invitation on the web.');
+
+/*
           if(confirm('The person you trying to send a invitation, is not a customer of our service, if you proceed, we will send him a message, so he can download the application or view the invitation on the web.')) {
             this.data += '&confirmation=1';
 
@@ -26,6 +29,7 @@ $(document).on('load',function() {
 
             return;
           }
+*/
         } else if(result.status == '2') {
           alert(result.error.join('\n'));
         }
@@ -33,6 +37,10 @@ $(document).on('load',function() {
     });
 
     return false;
+  });
+
+  $('document').on('confirm',function() {
+    alert('123');
   });
 
   /* DISPLAY */
@@ -164,5 +172,7 @@ $(document).on('load',function() {
   <input type="hidden" name="period[2]">
 
   <button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Proceed</button>
+
+<button class="button button-block button-danger" style="border: 1px solid #AAAAAA" onclick="confirm('Confirmation Test?'); return false;">Proceed (Test)</button>
  </form>
 </div>

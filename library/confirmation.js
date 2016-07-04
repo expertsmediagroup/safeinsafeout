@@ -1,3 +1,9 @@
+confirm = function(text) {
+  if(confirm(text)) {
+    $(document).trigger('confirm');
+  }
+}
+
 /*
 $(document).on('device-initialize',function() {
   confirm = function(text) {
