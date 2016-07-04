@@ -32,7 +32,7 @@ $(document).on('load',function() {
   });
 
   $(document).on('confirm',function() {
-    $('#form').find('[name="confirm"]').val('1');
+    $('#form').find('[name="confirmation"]').val('1');
 
     login();
 
@@ -47,9 +47,7 @@ $(document).on('load',function() {
 
         if(result.status == '0') {
           load('invitation.html#add',true);
-        } else if(result.status == '2') {
-          alert(result.error.join('\n'));
-        }
+        } 
       }
     });
 
@@ -67,7 +65,7 @@ $(document).on('load',function() {
   $.when(ajax[0]).done(function(response_property) {
     response_property = jQuery.parseJSON(response_property);
 
-    $('#form').find('[name="confirm"]').val('0');
+    $('#form').find('[name="confirmation"]').val('0');
 
     $('#form').find('[name="contact"]').on('input',function() {
       $('#form').find('[name="phone[0]"]').val($(this).val());
@@ -152,7 +150,7 @@ $(document).on('load',function() {
  </div>
 
  <form id="form">
-  <input type="hidden" name="confirm">
+  <input type="hidden" name="confirmation">
 
   <label class="item item-input">
    <span class="input-label">Name</span>
