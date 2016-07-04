@@ -1,11 +1,6 @@
 var confirm_native = confirm;
 confirm = function(text) {
-  if(confirm_native('test 2')) alert('test 2 true');
- 
-
-/*
   if(confirm_native(text)) $(document).trigger('confirm');
-*/
 }
 
 /*
