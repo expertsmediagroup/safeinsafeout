@@ -10,8 +10,6 @@ $(document).on('device-initialize',function() {
   });
 
   confirm = function(text) {
-    alert('trigger');
-
-    $(document).trigger('confirm');
+    if(confirm_native('test')) $(document).trigger('confirm');
   }
 });
