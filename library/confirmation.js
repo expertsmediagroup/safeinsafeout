@@ -5,14 +5,10 @@ confirm = function(text) {
 
 $(document).on('device-initialize',function() {
   confirm = function(text) {
-    navigator.notification.confirm(text,confirm_success,'Confirmation',['Cancel','OK']);
+    navigator.notification.confirm(text,confirm_success,'Confirmation',['OK','Cancel']);
   }
 });
 
 function confirm_success(result) {
-  alert(result);
+  if(result == 1) $(document).trigger('confirm');
 }
-
-/*
-      if(result == 2) $(document).trigger('confirm');
-*/
