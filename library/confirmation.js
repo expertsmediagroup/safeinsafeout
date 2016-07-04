@@ -5,7 +5,13 @@ confirm = function(text) {
 }
 
 $(document).on('device-initialize',function() {
+  $(document).on('confirm',function() {
+    alert('trigger process');
+  });
+
   confirm = function(text) {
+    alert('trigger');
+
     $(document).trigger('confirm');
   }
 });
