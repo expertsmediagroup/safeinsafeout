@@ -1,11 +1,18 @@
-var confirm_native = confirm;
-
+var native_confirm = confirm;
 confirm = function(text) {
-  if(confirm_native(text)) $(document).trigger('confirm');
+  if(native_confirm(text)) $(document).trigger('confirm');
 }
 
 $(document).on('device-initialize',function() {
   confirm = function(text) {
-    if(confirm_native('test')) $(document).trigger('confirm');
+    navigator.notification.confirm(text,confirm_success,'Confirmation',['Cancel','OK']);
   }
 });
+
+function confirm_success(result) {
+  alert(result);
+}
+
+/*
+      if(result == 2) $(document).trigger('confirm');
+*/
