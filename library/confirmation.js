@@ -1,7 +1,5 @@
 confirm = function(text) {
-  if(confirm(text)) {
-    $(document).trigger('confirm');
-  }
+  alert(text);
 }
 
 /*
