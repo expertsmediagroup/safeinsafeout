@@ -33,9 +33,9 @@ $(document).on('load',function() {
       phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;      
 
       if(response_invitation.invitation[key].type == 'incoming') {
-        code[0] += '<a href="invitation_view.html#'+key+'" class="item"><h2><b>'+response_invitation.invitation[key].name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Period (Start): '+response_invitation.invitation[key].period_start+'</p><p>Period (End): '+response_invitation.invitation[key].period_end+'</p></a>';
+        code[0] += '<a href="invitation_view.html#'+key+'" class="item"><h2><b>'+response_invitation.invitation[key].name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Period (Start): '+response_invitation.invitation[key].period_start+'</p><p>Period (End): '+response_invitation.invitation[key].period_end+'</p><p>Status: '+response_invitation.invitation[key].status+'</p></a>';
       } else {
-        code[1] += '<a href="invitation_modify.html#'+key+'" class="item"><h2><b>'+response_invitation.invitation[key].name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Property: '+response_property.property[response_invitation.invitation[key].property].name+'</p><p>Period (Start): '+response_invitation.invitation[key].period_start+'</p><p>Period (End): '+response_invitation.invitation[key].period_end+'</p></a>';
+        code[1] += '<a href="invitation_modify.html#'+key+'" class="item"><h2><b>'+response_invitation.invitation[key].name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Property: '+response_property.property[response_invitation.invitation[key].property].name+'</p><p>Period (Start): '+response_invitation.invitation[key].period_start+'</p><p>Period (End): '+response_invitation.invitation[key].period_end+'</p><p>Status: '+response_invitation.invitation[key].status+'</p></a>';
       }
     }
 
