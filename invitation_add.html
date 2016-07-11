@@ -118,7 +118,7 @@ $(document).on('load',function() {
       $('#form').find('[name="phone[0]"]').trigger('change');
     });
 
-    for(key in response_property.property) code += '<option value="'+key+'">'+response_property.property[key].name+'</option>';
+    for(key in response_property.property) code += '<option value="'+response_property.property[key].id+'">'+response_property.property[key].customer_property_name+'</option>';
     $('#form').find('[name="property"]').append(code);         
 
     $('#form').find('[name="period[0]"]').val(moment().format('YYYY-MM-DD hh:mmA'));
