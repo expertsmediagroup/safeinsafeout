@@ -52,7 +52,10 @@ $(document).on('load',function() {
       phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
 
       code[0] = '<h2><b>'+response_invitation.invitation.name+'</b></h2><p>Contact: <span data-contact="'+phone+'">Unknown</span></p><p>Phone: '+phone+'</p><p>Period (Start): '+response_invitation.invitation.period_start+'</p><p>Period (End): '+response_invitation.invitation.period_end+'</p><p>Status: '+response_invitation.invitation.status+'</p>';
-      code[0] += '<p><form class="form"><input type="hidden" name="status" value="1"><button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Confirmation (Coming)</button></form><form class="form"><input type="hidden" name="status" value="0"><button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Confirmation (Not Coming)</button></form></p>';
+
+      if(response_invitation.invitation.status=='New' || response_invitation.invitation.status=='Viewed') {
+        code[0] += '<p><form class="form"><input type="hidden" name="status" value="1"><button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Confirmation (Coming)</button></form><form class="form"><input type="hidden" name="status" value="0"><button class="button button-block button-stable" style="border: 1px solid #AAAAAA">Confirmation (Not Coming)</button></form></p>';
+      }
 
       if(response_invitation.invitation.status=='New' || response_invitation.invitation.status=='Viewed') {
         code[1] = '<font color="red">You must confirm your invitation.</font>';
