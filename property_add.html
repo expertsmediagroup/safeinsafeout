@@ -9,7 +9,7 @@ $(document).on('load',function() {
 
     $.ajax({
       type: 'post',
-      url: 'http://www.safein-safeout.com/application_customer/index.php?action=property&step=add&hash='+localStorage.getItem('hash'),
+      url: 'http://www.safein-safeout.com/application_customer/api.php?action=property&step=add&hash='+localStorage.getItem('hash'),
       data: $('#form').serialize(),
       cache: false,
       async: false,

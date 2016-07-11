@@ -5,7 +5,7 @@ $(document).on('load',function() {
   login();
 
   /* FORM */
-  form[0] = 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&step=identification&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash');
+  form[0] = 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=identification&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash');
   form[1] = 'invitation_view.html#'+location.hash.substring(location.hash.indexOf('/')+1);
 
   /* UPLOAD */

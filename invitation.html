@@ -13,7 +13,7 @@ $(document).on('load',function() {
   var ajax=[];
   ajax[0] = $.ajax({
     type: 'get',
-    url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&hash='+localStorage.getItem('hash')
+    url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&hash='+localStorage.getItem('hash')
   });
 
   var phoneparser=[],phone='',code=['',''];

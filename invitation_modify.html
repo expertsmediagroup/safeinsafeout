@@ -16,7 +16,7 @@ $(document).on('load',function() {
 
     $.ajax({
       type: 'post',
-      url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&step='+method+'&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash'),
+      url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step='+method+'&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash'),
       data: data,
       cache: false,
       async: false,
@@ -38,7 +38,7 @@ $(document).on('load',function() {
   var ajax=[];
   ajax[0] = $.ajax({
     type: 'get',
-    url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash')
+    url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash')
   });
 
   var phoneparser=[],code='';
