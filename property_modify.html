@@ -45,7 +45,7 @@ $(document).on('load',function() {
     response_property = jQuery.parseJSON(response_property);
 
     if(response_property.status == '0') {      
-      $('#form').find('[name="name"]').val(response_property.property.name);
+      $('#form').find('[name="name"]').val(response_property.property.customer_property_name);
 
       $('#form').find('[name="code"]').val(response_property.property.code);
 

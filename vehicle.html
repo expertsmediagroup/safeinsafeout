@@ -20,7 +20,7 @@ $(document).on('load',function() {
   $.when(ajax[0]).done(function(response_vehicle) {
     response_vehicle = jQuery.parseJSON(response_vehicle);
 
-    for(key in response_vehicle.vehicle) code += '<a class="item" href="vehicle_modify.html#'+key+'"><h2><b>'+response_vehicle.vehicle[key].name+'</b></h2><p>Type: '+response_vehicle.vehicle[key].type.charAt(0).toUpperCase()+response_vehicle.vehicle[key].type.slice(1)+'</p><p>Plate: '+response_vehicle.vehicle[key].plate+'</p></a>';
+    for(key in response_vehicle.vehicle) code += '<a class="item" href="vehicle_modify.html#'+response_vehicle.vehicle[key].id+'"><h2><b>'+response_vehicle.vehicle[key].customer_vehicle_name+'</b></h2><p>Type: '+response_vehicle.vehicle[key].type.charAt(0).toUpperCase()+response_vehicle.vehicle[key].type.slice(1)+'</p><p>Plate: '+response_vehicle.vehicle[key].plate+'</p></a>';
     
     if(code) {
       $('#data').removeClass('item');

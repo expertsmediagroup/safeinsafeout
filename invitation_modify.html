@@ -38,31 +38,23 @@ $(document).on('load',function() {
   var ajax=[];
   ajax[0] = $.ajax({
     type: 'get',
-    url: 'http://www.safein-safeout.com/application_customer/index.php?action=property&hash='+localStorage.getItem('hash')
-  });
-
-  ajax[1] = $.ajax({
-    type: 'get',
     url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash')
   });
 
   var phoneparser=[],code='';
-  $.when(ajax[0],ajax[1]).done(function(response_property,response_invitation) {
-    response_property = jQuery.parseJSON(response_property[0]);
-
-    response_invitation = jQuery.parseJSON(response_invitation[0]);
+  $.when(ajax[0]).done(function(response_invitation) {
+    response_invitation = jQuery.parseJSON(response_invitation);
 
     if(response_invitation.status == '0') {
-      phoneparser = parsePhone(response_invitation.invitation.phone);
+      phoneparser = parsePhone(response_invitation.invitation.customer_invitation_phone);
 
       $('#form').find('[name="name"]').val(response_invitation.invitation.name);
 
       $('#form').find('[name="phone"]').val('+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number);
       $('.flag').addClass('flag-'+phoneparser.countryISOCode.toLowerCase());
 
-      for(key in response_property.property) code += '<option value="'+key+'">'+response_property.property[key].name+'</option>';
+      code += '<option value="'+key+'">'+response_invitation.invitation.customer_property_name+'</option>';
       $('#form').find('[name="property"]').append(code);   
-      $('#form').find('[name="property"]').val(response_invitation.invitation.property);   
 
       $('#form').find('[name="period[0]"]').val(response_invitation.invitation.period_start);
 

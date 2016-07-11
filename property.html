@@ -20,7 +20,7 @@ $(document).on('load',function() {
   $.when(ajax[0]).done(function(response_property) {
     response_property = jQuery.parseJSON(response_property);
 
-    for(key in response_property.property) code += '<a class="item" href="property_modify.html#'+key+'"><h2><b>'+response_property.property[key].name+'</b></h2><p>Code: '+response_property.property[key].code+'</p><p>Address: '+response_property.property[key].building_address+' ('+response_property.property[key].address+')</p><p>ZIP: '+response_property.property[key].building_zip+'</p><p>City: '+response_property.property[key].building_city+'</p><p>State/Provice: '+response_property.property[key].building_state_province+'</p><p>Country: '+response_property.property[key].building_country+'</p></a>';
+    for(key in response_property.property) code += '<a class="item" href="property_modify.html#'+response_property.property[key].id+'"><h2><b>'+response_property.property[key].customer_property_name+'</b></h2><p>Code: '+response_property.property[key].code+'</p><p>Address: '+response_property.property[key].building_address+' ('+response_property.property[key].address+')</p><p>ZIP: '+response_property.property[key].building_zip+'</p><p>City: '+response_property.property[key].building_city+'</p><p>State/Provice: '+response_property.property[key].building_state_province+'</p><p>Country: '+response_property.property[key].building_country+'</p></a>';
 
     if(code) {
       $('#data').removeClass('item');

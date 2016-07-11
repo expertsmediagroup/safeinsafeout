@@ -45,7 +45,7 @@ $(document).on('load',function() {
     response_vehicle = jQuery.parseJSON(response_vehicle);
 
     if(response_vehicle.status == '0') {
-      $('#form').find('[name="name"]').val(response_vehicle.vehicle.name); 
+      $('#form').find('[name="name"]').val(response_vehicle.vehicle.customer_vehicle_name); 
 
       $('#form').find('[name="type"]').val(response_vehicle.vehicle.type);
 

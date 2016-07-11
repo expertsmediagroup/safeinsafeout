@@ -28,6 +28,7 @@ function load(page,history) {
   $('#button').html('');
   $('#overlay').show();
   $('#progress').show();
+  $('#connectivity').hide();
 
   if(sessionStorage.getItem('url')) url = sessionStorage.getItem('url');
 
