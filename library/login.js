@@ -1,7 +1,7 @@
 function login() {
   $.ajax({
     type: 'post',
-    url: 'http://www.safein-safeout.com/application_customer/index.php?action=login&step=hash&hash='+localStorage.getItem('hash'),
+    url: 'http://www.safein-safeout.com/application_customer/api.php?action=login&step=hash&hash='+localStorage.getItem('hash'),
     data: 'token='+token,
     cache: false,
     success: function(result) {
