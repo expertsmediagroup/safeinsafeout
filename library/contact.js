@@ -80,12 +80,13 @@ function contact_success_interval() {
         if(phoneparser) {
           phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
 
-          if($('#form').find('[name="phone"]').val() && $('#form').find('[name="phone"]').val().replace(/[^0-9+]/g,'') === phone.replace(/[^0-9+]/g,'')) code += '<option value="'+phone+'" selected>'+contact_split[0]+' ('+phone+')';
-          else                                                                                                                                           code += '<option value="'+phone+'">'+contact_split[0]+' ('+phone+')';
+          code += '<option value="'+phone+'">'+contact_split[0]+' ('+phone+')';
         }
       }
 
       $('#form').find('[name="contact"]').html(code);
+
+      $('#form').find('[name="contact"]').val('+34-611-495304');
     }
   } else {
     setTimeout(contact_success_interval,100);
