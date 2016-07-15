@@ -1,20 +1,20 @@
 $(document).on('device-initialize device-resume',function() {
   var option,field;
 
-  if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    option = new ContactFindOptions();
+  option = new ContactFindOptions();
   
-    option.filter = '';
-    option.multiple = true;
-    option.hasPhoneNumber = true;
+  option.filter = '';
+  option.multiple = true;
+  option.hasPhoneNumber = true;
 
-    field = [navigator.contacts.fieldType.displayName,navigator.contacts.fieldType.phoneNumbers];
+  field = [navigator.contacts.fieldType.displayName,navigator.contacts.fieldType.phoneNumbers];
 
-    navigator.contacts.find(field,contact_success,contact_fail,option);
-  }
+  navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
 $(document).on('device-load',function() {
+  if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
+  }
 })
 
 function contact_success(data) {
