@@ -54,9 +54,7 @@ function contact_success_interval() {
 
   if(interval) {
     if($('span').data('contact')) {
-/*
       $('span[data-contact]').html('Unknown');
-*/
 
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
@@ -72,7 +70,7 @@ function contact_success_interval() {
     }
 
     if($('form').find('[name="contact"]').length) {
-      code += '<option value=''>Unknown';
+      code += '<option value="">Unknown';
 
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
@@ -88,8 +86,6 @@ function contact_success_interval() {
 
       $('#form').find('[name="contact"]').append(code);
     }
-
-    alert('init');
   } else {
     setTimeout(contact_success_interval,100);
   }
