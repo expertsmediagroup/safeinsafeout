@@ -1,4 +1,4 @@
-var contact;
+var contact=];
 $(document).on('device-initialize device-resume',function() {
   var option,field;
 
@@ -14,8 +14,7 @@ $(document).on('device-initialize device-resume',function() {
 });
 
 $(document).on('device-load device-resume',function() {
-  alert('init');
-
+/*
   if($('span').data('contact')) { 
     alert(contact.length);  
 
@@ -31,8 +30,10 @@ $(document).on('device-load device-resume',function() {
       }
     }
   }
-
-  alert('init 2');
+*/
+  alert('display');
+ 
+  alert(JSON.stringify(contact));
 })
 
 function contact_success(data) {
@@ -58,7 +59,7 @@ function contact_success(data) {
 
   contact.sort();
 
-  alert(JSON.stringify(contact));
+  alert('init');
 }
 
 function contact_fail(message) {
