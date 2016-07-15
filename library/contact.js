@@ -14,13 +14,13 @@ $(document).on('device-initialize device-resume',function() {
 });
 
 $(document).on('device-load device-resume',function() {
-  setInterval(function() {
-    if(interval === true) {
+  var blaat = setInterval(function() {
+    if(interval == true) {
       alert('display');
  
       alert(JSON.stringify(contact));
 
-      interval = false;
+      clearInterval(blaat);
     }
   },1000);
 })
