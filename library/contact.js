@@ -13,7 +13,7 @@ $(document).on('device-initialize device-resume',function() {
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
-$(document).on('device-load device-resume',function() {
+$(document).on('device-load',function() {
 /*
   if($('span').data('contact')) { 
     alert(contact.length);  
