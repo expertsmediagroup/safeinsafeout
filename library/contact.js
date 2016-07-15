@@ -22,7 +22,7 @@ $(document).on('device-load device-resume',function() {
 })
 
 function contact_success(data) {
-  var name='',phone='',contact_bypass=[],phoneparser=[];
+  var name='',phone='',bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
     if(data[a][navigator.contacts.fieldType.displayName] != null && data[a][navigator.contacts.fieldType.displayName] != undefined) {
@@ -35,9 +35,9 @@ function contact_success(data) {
    
         if(phone.indexOf('+') < 0) phone = localStorage.getItem('prefix')+phone;
   
-        if(!contact_bypass[phone]) contact[contact.length] = name+'|'+phone;
+        if(!bypass[phone]) contact[contact.length] = name+'|'+phone;
   
-        contact_bypass[phone] = true;
+        bypass[phone] = true;
       }
     }
   }
@@ -50,15 +50,15 @@ function contact_success(data) {
 function contact_success_interval() {
   if(interval) {
     if($('span').data('contact')) {
-      for(a=0;a<list.length;a++) {
-        list[a] = list[a].split('|');
+      for(a=0;a<contact.length;a++) {
+        contact[a] = contact[a].split('|');
       
-        phoneparser = parsePhone(list[a][1]);
+        phoneparser = parsePhone(contact[a][1]);
      
         if(phoneparser) {
           phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
      
-          $('span[data-contact="'+phone+'"]').html(list[a][0]+' ('+phone+')');
+          $('span[data-contact="'+phone+'"]').html(contact[a][0]+' ('+phone+')');
         }
       }
     }
