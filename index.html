@@ -101,6 +101,11 @@ document.addEventListener("deviceready",function() {
   if(localStorage.getItem('hash')) load('invitation.html',true);
   else                             load('login.html',true);
 },false);
+
+document.addEventListener("resume",function() {
+  /* TRIGGER */
+  $(document).trigger('device-resume');
+},false);
 </script>
 
 <div id="bar_outside" class="bar bar-header bar-positive">

@@ -1,3 +1,18 @@
+$(document).on('device-initialize',function() {
+  alert('initiaize');
+});
+
+$(document).on('device-resume',function() {
+  alert('resume');
+});
+
+$(document).on('device-initialize device-resume',function() {
+  alert('initiaize+resume');
+});
+
+
+
+
 $(document).on('device-load',function() {
   var option,field;
 
