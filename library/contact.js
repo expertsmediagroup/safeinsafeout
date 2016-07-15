@@ -54,6 +54,8 @@ function contact_success_interval() {
 
   if(interval) {
     if($('span').data('contact')) {
+      $('span').data('contact').html('Unknown');
+
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
       
