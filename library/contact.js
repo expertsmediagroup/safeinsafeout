@@ -1,5 +1,6 @@
+var interval;
 $(document).on('device-initialize device-resume',function() {
-  var option,field,interval=false;
+  var option,field;
 
   option = new ContactFindOptions();
   
@@ -8,6 +9,8 @@ $(document).on('device-initialize device-resume',function() {
   option.hasPhoneNumber = true;
 
   field = [navigator.contacts.fieldType.displayName,navigator.contacts.fieldType.phoneNumbers];
+
+  interval = false;
 
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
