@@ -50,11 +50,11 @@ function contact_success(data) {
 }
 
 function contact_success_interval() {
-  var contact_split=[];
+  var contact_split=[],code='';
 
   if(interval) {
     if($('span').data('contact')) {
-      $('span[data-contact="*"]').html('Unknown');
+      $('span[data-contact]').html('Unknown');
 
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
@@ -67,11 +67,29 @@ function contact_success_interval() {
           $('span[data-contact="'+phone+'"]').html(contact_split[0]);
         }
       }
-
-      alert('init');
     }
+
+    if($('form').find('[name="contact"]').length) {
+      code += '<option value=''>Unknown';
+
+      for(a=0;a<contact.length;a++) {
+        contact_split = contact[a].split('|');
+
+        phoneparser = parsePhone(contact_split[1]);
+
+        if(phoneparser) {
+          phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
+ 
+          code += '<option value="'+phone+'">'+contact_split[0]+' ('+phone+')';
+        }
+      }
+
+      $('#form').find('[name="contact"]').append(code);
+    }
+
+    alert('init');
   } else {
-    setTimeout(contact_success_interval,250);
+    setTimeout(contact_success_interval,100);
   }
 }
 
