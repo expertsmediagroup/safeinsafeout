@@ -14,16 +14,22 @@ $(document).on('device-initialize device-resume',function() {
 });
 
 $(document).on('device-load device-resume',function() {
-  var blaat = setInterval(function() {
-    if(interval == true) {
-      alert('display');
- 
-      alert(JSON.stringify(contact));
-
-      clearInterval(blaat);
-    }
-  },1000);
+ contact(); 
 })
+
+function contact() {
+  if(interval) {
+    alert('display');
+ 
+    alert(JSON.stringify(contact));
+
+    alert(interval);
+    interval = false;
+    alert(false);
+  } else {
+    setInterval(contact,1000);
+  }
+}
 
 function contact_success(data) {
   var name='',phone='',contact=[],contact_bypass=[],phoneparser=[];
