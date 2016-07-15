@@ -84,7 +84,7 @@ function contact_success_interval() {
         }
       }
 
-      $('#form').find('[name="contact"]').append(code);
+      $('#form').find('[name="contact"]').html(code);
 
       if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
     }
