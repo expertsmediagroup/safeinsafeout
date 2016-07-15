@@ -1,4 +1,4 @@
-var contact=[];
+var contact;
 $(document).on('device-initialize device-resume',function() {
   var option,field;
 
@@ -36,9 +36,7 @@ $(document).on('device-load device-resume',function() {
 })
 
 function contact_success(data) {
-alert(JSON.stringify(data));
-
-  var name='',phone='',contact_bypass=[],phoneparser=[];
+  var name='',phone='',contact[],contact_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
     if(data[a][navigator.contacts.fieldType.displayName] != null && data[a][navigator.contacts.fieldType.displayName] != undefined) {
@@ -59,6 +57,8 @@ alert(JSON.stringify(data));
   }
 
   contact.sort();
+
+  alert(JSON.stringify(contact));
 }
 
 function contact_fail(message) {
