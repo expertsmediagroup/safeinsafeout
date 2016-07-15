@@ -12,8 +12,27 @@ $(document).on('device-initialize device-resume',function() {
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
-$(document).on('device-load',function() {
+$(document).on('device-load device-resume',function() {
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
+    $('#form').find('[name="contact"]').append('<option value="">Unknown</option>');
+
+    for(a=0;a<contact.length;a++) {
+      contact[a] = contact[a].split('|');
+
+      phoneparser = parsePhone(contact[a][1]);
+
+      if(phoneparser) {
+        phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
+
+        $('span[data-contact="'+phone+'"]').html(contact[a][0]+' ('+phone+')');
+
+        $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+contact[a][0]+' ('+phone+')</option>');
+      }
+    }
+
+    $('form').find('[name="contact"]').attr('disabled',false);
+
+    if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
   }
 })
 
