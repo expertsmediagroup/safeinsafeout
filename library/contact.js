@@ -1,19 +1,4 @@
-$(document).on('device-initialize',function() {
-  alert('initiaize');
-});
-
-$(document).on('device-resume',function() {
-  alert('resume');
-});
-
 $(document).on('device-initialize device-resume',function() {
-  alert('initiaize+resume');
-});
-
-
-
-
-$(document).on('device-load',function() {
   var option,field;
 
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
@@ -27,10 +12,13 @@ $(document).on('device-load',function() {
 
     navigator.contacts.find(field,contact_success,contact_fail,option);
   }
+});
+
+$(document).on('device-load',function() {
 })
 
 function contact_success(data) {
-  var name='',phone='',list=[],list_bypass=[],phoneparser=[];
+  var name='',phone='',contact=[],contact_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
     if(data[a][navigator.contacts.fieldType.displayName] != null && data[a][navigator.contacts.fieldType.displayName] != undefined) {
@@ -40,33 +28,19 @@ function contact_success(data) {
       if(data[a][navigator.contacts.fieldType.phoneNumbers] != null && data[a][navigator.contacts.fieldType.phoneNumbers].length > 0) for(b=0;b<data[a][navigator.contacts.fieldType.phoneNumbers].length;b++) if(data[a][navigator.contacts.fieldType.phoneNumbers][b].value != null && data[a][navigator.contacts.fieldType.phoneNumbers][b].value != undefined) {            
         phone = data[a][navigator.contacts.fieldType.phoneNumbers][b].value;
         phone = phone.replace(/[^0-9+]/g,'');
-  
+   
         if(phone.indexOf('+') < 0) phone = localStorage.getItem('prefix')+phone;
-
-        if(!list_bypass[phone]) list[list.length] = name+'|'+phone;
-
-        list_bypass[phone] = true;
+  
+        if(!contact_bypass[phone]) contact[contact.length] = name+'|'+phone;
+  
+        contact_bypass[phone] = true;
       }
     }
   }
 
-  list.sort();
+  contact.sort();
 
-  for(a=0;a<list.length;a++) {
-    list[a] = list[a].split('|');
-    
-    phoneparser = parsePhone(list[a][1]);
-
-    if(phoneparser) {
-      phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
-
-      $('span[data-contact="'+phone+'"]').html(list[a][0]+' ('+phone+')');
-
-      $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+list[a][0]+' ('+phone+')</option>');        
-    }
-  }
-
-  if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
+  alert(contact.length);  
 }
 
 function contact_fail(message) {
