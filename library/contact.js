@@ -13,8 +13,10 @@ $(document).on('device-initialize device-resume',function() {
 });
 
 $(document).on('device-load device-resume',function() {
-  if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
-    $('#form').find('[name="contact"]').append('<option value="">Unknown</option>');
+  alert('init');
+
+  if($('span').data('contact')) { 
+    alert(contact.length);  
 
     for(a=0;a<contact.length;a++) {
       contact[a] = contact[a].split('|');
@@ -25,15 +27,11 @@ $(document).on('device-load device-resume',function() {
         phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
 
         $('span[data-contact="'+phone+'"]').html(contact[a][0]+' ('+phone+')');
-
-        $('#form').find('[name="contact"]').append('<option value="'+phone+'">'+contact[a][0]+' ('+phone+')</option>');
       }
     }
-
-    $('form').find('[name="contact"]').attr('disabled',false);
-
-    if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
   }
+
+  alert('init 2');
 })
 
 function contact_success(data) {
@@ -58,8 +56,6 @@ function contact_success(data) {
   }
 
   contact.sort();
-
-  alert(contact.length);  
 }
 
 function contact_fail(message) {
