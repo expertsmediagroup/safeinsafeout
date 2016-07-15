@@ -1,6 +1,5 @@
-var interval;
 $(document).on('device-initialize device-resume',function() {
-  var option,field;
+  var option,field,interval=false;
 
   option = new ContactFindOptions();
   
@@ -14,22 +13,8 @@ $(document).on('device-initialize device-resume',function() {
 });
 
 $(document).on('device-load device-resume',function() {
- contact(); 
+  contact_success_process(); 
 })
-
-function contact() {
-  if(interval) {
-    alert('display');
- 
-    alert(JSON.stringify(contact));
-
-    alert(interval);
-    interval = false;
-    alert(false);
-  } else {
-    setInterval(contact,1000);
-  }
-}
 
 function contact_success(data) {
   var name='',phone='',contact=[],contact_bypass=[],phoneparser=[];
@@ -55,6 +40,16 @@ function contact_success(data) {
   contact.sort();
 
   interval = true;
+}
+
+function contact_success_process() {
+  if(interval) {
+    alert(JSON.stringify(contact));
+
+    interval = false;
+  } else {
+    setInterval(contact_success_process,1000);
+  }
 }
 
 function contact_fail(message) {
