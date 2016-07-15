@@ -1,5 +1,8 @@
+var interval;
 $(document).on('device-initialize device-resume',function() {
-  var option,field,interval=false;
+  var option,field;
+
+  interval = false;
 
   option = new ContactFindOptions();
   
@@ -44,6 +47,7 @@ function contact_success(data) {
 
 function contact_success_process() {
   if(interval) {
+    alert('display');
     alert(JSON.stringify(contact));
 
     interval = false;
