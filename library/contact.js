@@ -22,7 +22,7 @@ $(document).on('device-load device-resume',function() {
 })
 
 function contact_success(data) {
-  var name='',phone='',bypass=[],phoneparser=[];
+  var name='',phone='',contact_bypass=[],phoneparser=[];
 
   contact = [];
   
@@ -37,9 +37,9 @@ function contact_success(data) {
    
         if(phone.indexOf('+') < 0) phone = localStorage.getItem('prefix')+phone;
   
-        if(!bypass[phone]) contact[contact.length] = name+'|'+phone;
+        if(!contact_bypass[phone]) contact[contact.length] = name+'|'+phone;
   
-        bypass[phone] = true;
+        contact_bypass[phone] = true;
       }
     }
   }
@@ -50,17 +50,19 @@ function contact_success(data) {
 }
 
 function contact_success_interval() {
+  var contact_split=[];
+
   if(interval) {
     if($('span').data('contact')) {
       for(a=0;a<contact.length;a++) {
-        contact[a] = contact[a].split('|');
+        contact_split = contact[a].split('|');
       
-        phoneparser = parsePhone(contact[a][1]);
+        phoneparser = parsePhone(contact_split[1]);
      
         if(phoneparser) {
           phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
      
-          $('span[data-contact="'+phone+'"]').html(contact[a][0]);
+          $('span[data-contact="'+phone+'"]').html(contact_split[0]);
         }
       }
     }
