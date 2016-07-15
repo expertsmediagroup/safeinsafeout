@@ -82,6 +82,8 @@ function contact_success_interval() {
 
           if($('#form').find('[name="phone"]').val() == phone) code += '<option value="'+phone+'" selected>'+contact_split[0]+' ('+phone+')';
           else                                                 code += '<option value="'+phone+'">'+contact_split[0]+' ('+phone+')';
+
+          if($('#form').find('[name="phone"]').val() == phone) alert('match ['+$('#form').find('[name="phone"]').val()+'] - ['+phone+']');
         }
       }
 
