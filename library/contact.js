@@ -54,7 +54,7 @@ function contact_success_interval() {
 
   if(interval) {
     if($('span').data('contact')) {
-      $('span').data('contact').html('Unknown');
+      $('span[data-contact="*"]').html('Unknown');
 
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
@@ -67,6 +67,8 @@ function contact_success_interval() {
           $('span[data-contact="'+phone+'"]').html(contact_split[0]);
         }
       }
+
+      alert('init');
     }
   } else {
     setTimeout(contact_success_interval,250);
