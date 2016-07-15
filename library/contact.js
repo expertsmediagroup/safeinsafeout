@@ -86,7 +86,7 @@ function contact_success_interval() {
 
       $('#form').find('[name="contact"]').html(code);
 
-      $('#form').find('[name="contact"]').val('+34-611-495304');
+      $('#form').find('[name="phone[0]"]').trigger('change');
     }
   } else {
     setTimeout(contact_success_interval,100);
