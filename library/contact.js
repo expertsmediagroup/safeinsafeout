@@ -1,6 +1,5 @@
-var contact=[];
 $(document).on('device-initialize device-resume',function() {
-  var option,field;
+  var option,field,interval=false;
 
   option = new ContactFindOptions();
   
@@ -13,27 +12,16 @@ $(document).on('device-initialize device-resume',function() {
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
-$(document).on('device-load',function() {
-/*
-  if($('span').data('contact')) { 
-    alert(contact.length);  
-
-    for(a=0;a<contact.length;a++) {
-      contact[a] = contact[a].split('|');
-
-      phoneparser = parsePhone(contact[a][1]);
-
-      if(phoneparser) {
-        phone = '+'+phoneparser.countryCode+'-'+phoneparser.areaCode+'-'+phoneparser.number;
-
-        $('span[data-contact="'+phone+'"]').html(contact[a][0]+' ('+phone+')');
-      }
-    }
-  }
-*/
-  alert('display');
+$(document).on('device-load device-resume',function() {
+  setInterval(function() {
+    if(interval) {
+      alert('display');
  
-  alert(JSON.stringify(contact));
+      alert(JSON.stringify(contact));
+
+      interval = false;
+    }
+  },1000);
 })
 
 function contact_success(data) {
@@ -59,7 +47,7 @@ function contact_success(data) {
 
   contact.sort();
 
-  alert('init');
+  interval = true;
 }
 
 function contact_fail(message) {
