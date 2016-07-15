@@ -66,8 +66,6 @@ function contact_success_interval() {
     }
 
     alert('int');
-
-    interval = false;
   } else {
     setTimeout(contact_success_interval,1000);
   }
