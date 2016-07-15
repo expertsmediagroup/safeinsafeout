@@ -15,7 +15,7 @@ $(document).on('device-initialize device-resume',function() {
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
-$(document).on('device-load device-resume',function() {
+$(document).on('device-load',function() {
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
     contact_success_interval(); 
   }
@@ -70,8 +70,6 @@ function contact_success_interval() {
     }
 
     if($('form').find('[name="contact"]').length) {
-      code += '<option value="">Unknown';
-
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
 
