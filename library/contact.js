@@ -1,4 +1,4 @@
-var contact=];
+var contact=[];
 $(document).on('device-initialize device-resume',function() {
   var option,field;
 
