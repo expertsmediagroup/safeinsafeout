@@ -1,4 +1,4 @@
-var interval;
+var contact=[],interval;
 $(document).on('device-initialize device-resume',function() {
   var option,field;
 
@@ -20,7 +20,7 @@ $(document).on('device-load device-resume',function() {
 })
 
 function contact_success(data) {
-  var name='',phone='',contact=[],contact_bypass=[],phoneparser=[];
+  var name='',phone='',contact_bypass=[],phoneparser=[];
   
   for(a=0;a<data.length;a++) {
     if(data[a][navigator.contacts.fieldType.displayName] != null && data[a][navigator.contacts.fieldType.displayName] != undefined) {
@@ -52,7 +52,7 @@ function contact_success_process() {
 
     interval = false;
   } else {
-    setInterval(contact_success_process,1000);
+    setTimeout(contact_success_process,1000);
   }
 }
 
