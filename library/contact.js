@@ -86,10 +86,6 @@ function contact_success_interval() {
       }
 
       $('#form').find('[name="contact"]').html(code);
-
-/*
-      //if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
-*/
     }
   } else {
     setTimeout(contact_success_interval,100);
