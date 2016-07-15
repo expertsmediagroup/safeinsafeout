@@ -15,7 +15,7 @@ $(document).on('device-initialize device-resume',function() {
   navigator.contacts.find(field,contact_success,contact_fail,option);
 });
 
-$(document).on('device-load',function() {
+$(document).on('device-load device-resume',function() {
   if($('form').find('[name="contact"]').length || $('span').data('contact')) { 
     contact_success_interval(); 
   }
@@ -70,6 +70,8 @@ function contact_success_interval() {
     }
 
     if($('form').find('[name="contact"]').length) {
+      code = '<option value="">Unknown';
+
       for(a=0;a<contact.length;a++) {
         contact_split = contact[a].split('|');
 
@@ -83,6 +85,8 @@ function contact_success_interval() {
       }
 
       $('#form').find('[name="contact"]').append(code);
+
+      if($('#form').find('[name="phone"]').val()) $('#form').find('[name="contact"]').val($('#form').find('[name="phone"]').val());
     }
   } else {
     setTimeout(contact_success_interval,100);
