@@ -68,10 +68,8 @@ function contact_success_interval() {
         }
       }
     }
-
-    alert('int');
   } else {
-    setTimeout(contact_success_interval,1000);
+    setTimeout(contact_success_interval,250);
   }
 }
 
