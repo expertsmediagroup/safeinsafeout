@@ -1,14 +1,12 @@
 <script type="text/javascript">
-var form=[];
 $(document).on('load',function() {
   /* INITIALIZE */
   login();
 
-  /* FORM */
-  form[0] = 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=identification&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash');
-  form[1] = 'invitation_view.html#'+location.hash.substring(location.hash.indexOf('/')+1);
-
   /* UPLOAD */
+  upload[0] = 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=identification&id='+location.hash.substring(location.hash.indexOf('/')+1)+'&hash='+localStorage.getItem('hash');
+  upload[1] = 'invitation_view.html#'+location.hash.substring(location.hash.indexOf('/')+1);
+
   $(document).off('upload');
 
   $(document).on('upload',function() {
