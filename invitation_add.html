@@ -9,7 +9,7 @@ $(document).on('load',function() {
 
     $.ajax({
       type: 'post',
-      url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&step=add&hash='+localStorage.getItem('hash'),
+      url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=add&hash='+localStorage.getItem('hash'),
       data: $('#form').serialize(),
       cache: false,
       async: false,
@@ -23,8 +23,6 @@ $(document).on('load',function() {
             this.data += '&confirmation=1';
 
             $.ajax(this);
-
-            return;
           }
         } else if(result.status == '2') {
           alert(result.error.join('\n'));
