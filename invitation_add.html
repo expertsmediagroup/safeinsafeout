@@ -3,15 +3,13 @@ $(document).on('load',function() {
   /* INITIALIZE */
   login();
 
-  $(document).off('confirm');
-
   /* FORM */
   $(document).on('submit','#form',function() {
     login();
 
     $.ajax({
       type: 'post',
-      url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=add&hash='+localStorage.getItem('hash'),
+      url: 'http://www.safein-safeout.com/application_customer/index.php?action=invitation&step=add&hash='+localStorage.getItem('hash'),
       data: $('#form').serialize(),
       cache: false,
       async: false,
@@ -21,33 +19,16 @@ $(document).on('load',function() {
         if(result.status == '0') {
           load('invitation.html#add',true);
         } else if(result.status == '1') {
-          confirm('The person you trying to send a invitation, is not a customer of our service, if you proceed, we will send the customer a SMS, so he can download the application or view the invitation on the web.');
+          if(confirm('The person you trying to send a invitation, is not a customer of our service, if you proceed, we will send him a message, so he can download the application or view the invitation on the web.')) {
+            this.data += '&confirmation=1';
+
+            $.ajax(this);
+
+            return;
+          }
         } else if(result.status == '2') {
           alert(result.error.join('\n'));
         }
-      }
-    });
-
-    return false;
-  });
-
-  $(document).on('confirm',function() {
-    $('#form').find('[name="confirmation"]').val('1');
-
-    login();
-
-    $.ajax({
-      type: 'post',
-      url: 'http://www.safein-safeout.com/application_customer/api.php?action=invitation&step=add&hash='+localStorage.getItem('hash'),
-      data: $('#form').serialize(),
-      cache: false,
-      async: false,
-      success: function(result) {
-        result = JSON.parse(result);
-
-        if(result.status == '0') {
-          load('invitation.html#add',true);
-        } 
       }
     });
 
